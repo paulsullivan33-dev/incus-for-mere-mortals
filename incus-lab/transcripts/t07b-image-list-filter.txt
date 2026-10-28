@@ -1,0 +1,3 @@
+$ incus image list images:debian
+Error: Get "http://unix.socket/1.0": dial unix /var/lib/incus/unix.socket: connect: no such file or directory
+[exit 1]

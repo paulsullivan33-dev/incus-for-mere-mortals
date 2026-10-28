@@ -1,0 +1,46 @@
+$ ./incus info
+config: {}
+api_extensions_count: 562
+api_status: stable
+api_version: "1.0"
+auth: trusted
+public: false
+auth_methods:
+  - tls
+auth_user_name: root
+auth_user_method: unix
+environment:
+  addresses: []
+  architectures:
+    - x86_64
+    - i686
+  certificate: ""
+  certificate_fingerprint: c80e577538cb49b3fe8cd63f1821724a9cea813659e7793b4801f8e2aca4f29e
+  driver: lxc
+  driver_version: 7.0.0
+  firewall: nftables
+  kernel: Linux
+  kernel_architecture: x86_64
+  kernel_features: {}
+  kernel_version: 7.0.0-39-generic
+  lxc_features:
+    environment_runtime_hooks: "true"
+  os_name: hatch-image
+  os_version: 0.1.46
+  project: default
+  server: incus
+  server_clustered: false
+  server_event_mode: full-mesh
+  server_name: htch-runtime
+  server_pid: 13635
+  server_version: 7.5.1
+  storage: ""
+  storage_version: ""
+  storage_supported_drivers:
+    - name: dir
+      version: "1"
+      remote: false
+    - name: truenas
+      version: 0.7.7
+      remote: true
+[exit 0]

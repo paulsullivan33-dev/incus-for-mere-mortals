@@ -1,0 +1,30 @@
+site_name: Incus for Mere Mortals
+site_description: Containers and virtual machines under one command. Installing Incus, meeting the daemon behind it, launching a first container and a first virtual machine, and shaping both with profiles, storage pools and networks, with the limits of the tool stated plainly.
+site_url: https://paulsullivan33-dev.github.io/incus-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code MIT'
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What Incus Is: what-incus-is.md
+  - The Moving Parts: the-moving-parts.md
+  - Installing Incus: installing-incus.md
+  - First Contact With a Server: first-contact.md
+  - Your First Container: your-first-container.md
+  - Working Inside an Instance: working-inside.md
+  - Virtual Machines: virtual-machines.md
+  - Images: images.md
+  - Shaping Instances — Config, Devices and Profiles: shaping-instances.md
+  - Storage Pools and Volumes: storage.md
+  - Networking: networking.md
+  - Snapshots, Copies and Backups: snapshots-copies-and-backups.md
+  - Remotes and Other Servers: remotes-and-servers.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md

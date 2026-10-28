@@ -1,0 +1,12 @@
+$ ./incus profile show default
+config: {}
+description: Default Incus profile
+devices:
+  root:
+    path: /
+    pool: default
+    type: disk
+name: default
+used_by: []
+project: default
+[exit 0]

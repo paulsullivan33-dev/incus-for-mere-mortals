@@ -1,0 +1,109 @@
+Incus — the distilled commands
+====================================================================
+Placeholders: <name> is an instance of
+yours; <server> is a remote of yours.
+Starred (*) commands are the ones this
+guide's lab ran for real; the rest are
+the documented vocabulary of chapters
+5-13.
+
+THE CLIENT ALONE (chapters 3-4)
+--------------------------------------------------------------------
+* incus --version            # the bare number
+* incus version              # client version; server: unreachable
+* incus --help               # the whole command tree
+  incus <command> --help     # every command documents itself
+* incus remote list          # born knowing: local + images
+* cat ~/.config/incus/config.yml
+                             # the client's entire memory
+* incus alias list           # born with one: shell
+* incus list                 # with no daemon: the famous error
+* incus image list images:   # the catalogue, asked directly
+                             # (the lab's network stopped this
+                             #  one at the TLS handshake)
+
+THE DAEMON (chapters 3 and 5)
+--------------------------------------------------------------------
+* incusd                     # the daemon; packaged installs
+                             # run it as a service instead
+* incus admin init           # interview: pool, network, done
+* incus admin init --preseed < preseed.yaml
+                             # the scripted version of the same
+* incus info                 # the daemon's own report card
+* incus config show          # server configuration ({} at birth)
+* incus storage list         # pools: name, driver, state
+* incus profile show default # the profile every instance wears
+
+FIRST INSTANCE (chapter 5)
+--------------------------------------------------------------------
+  incus launch images:debian/13 workbench
+                             # create + start in one verb
+  incus create images:debian/13 spare
+                             # create only; start it later
+  incus list                 # name, state, addresses, type
+  incus info workbench
+  incus start | stop | restart | pause | resume <name>
+  incus delete <name>        # stop first, or --force
+
+INSIDE (chapter 6)
+--------------------------------------------------------------------
+  incus shell <name>         # an alias: exec -- su -l
+  incus exec <name> -- <cmd> # one command, exit code and all
+  incus console <name>       # the instance's own screen
+  incus file push ./f <name>/root/f
+  incus file pull <name>/var/log/x ./x
+  incus file edit <name>/etc/hosts
+  incus port-forward <server>:<name> 8080
+                             # a temporary tunnel to your desk
+
+VIRTUAL MACHINES (chapter 7)
+--------------------------------------------------------------------
+  incus launch images:debian/13 bigbox --vm
+  incus launch images:debian/13 v1 --vm -c limits.cpu=4 -c limits.memory=4GiB
+  incus console --type=vga <name>
+                             # the graphical console (SPICE)
+
+IMAGES (chapter 8)
+--------------------------------------------------------------------
+  incus image list images:   # browse the catalogue
+  incus image info images:debian/13
+  incus image list           # what this server has cached
+  incus publish <name> --alias myimage
+  incus image export <fingerprint> ; incus image import <file>
+
+SHAPING (chapter 9)
+--------------------------------------------------------------------
+  incus config set <name> limits.memory 2GiB
+  incus config show <name> --expanded
+                             # instance + profiles, resolved
+  incus config device add <name> share disk source=/srv/data path=/data
+  incus config device add <name> web proxy listen=tcp:0.0.0.0:8080 connect=tcp:127.0.0.1:80
+  incus profile create small ; incus profile assign <name> default,small
+  incus launch images:debian/13 tiny -p default -p small -c limits.cpu=2
+
+STORAGE AND NETWORK (chapters 10-11)
+--------------------------------------------------------------------
+  incus storage create fast zfs source=/dev/disk/by-id/...
+  incus storage info <pool>
+  incus storage volume create <pool> data
+  incus storage volume attach <pool> data <name> /data
+  incus network list ; incus network show incusbr0
+  incus network create backend ipv4.address=10.20.30.1/24 ipv4.nat=true
+
+SNAPSHOTS, COPIES, BACKUPS (chapter 12)
+--------------------------------------------------------------------
+  incus snapshot create <name> before-upgrade
+  incus snapshot restore <name> before-upgrade
+  incus copy <name> <name>2 ; incus copy <server>:<name> <name>
+  incus move <name> <newname>
+  incus export <name> backup.tar.gz ; incus import backup.tar.gz
+
+REMOTES (chapter 13)
+--------------------------------------------------------------------
+  incus config set core.https_address :8443      # on the server
+  incus config trust add --name laptop           # on the server:
+                                                 # mints a token
+  incus remote add bigserver https://host:8443   # on the client
+  incus remote switch bigserver ; incus remote list
+  incus project list ; incus project switch <project>
+  incus webui <server>:      # the browser front-end

@@ -1,0 +1,4 @@
+$ ./incus version
+Client version: 7.0.2
+Server version: unreachable
+[exit 0]

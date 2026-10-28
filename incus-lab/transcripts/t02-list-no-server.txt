@@ -1,0 +1,6 @@
+$ ./incus list
+Usage: incus list ([<remote>:]|--all-remotes) [<filter>...]
+                  ┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
+
+Error: The incus daemon doesn't appear to be started (socket path: /var/lib/incus/unix.socket)
+[exit 1]

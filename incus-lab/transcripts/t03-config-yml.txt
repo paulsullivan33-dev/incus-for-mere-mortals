@@ -1,0 +1,17 @@
+$ cat $INCUS_CONF/config.yml
+default-remote: local
+remotes:
+  images:
+    protocol: simplestreams
+    public: true
+    addr: https://images.linuxcontainers.org
+  local:
+    protocol: incus
+    public: false
+    addr: unix://
+aliases: {}
+defaults:
+  list_format: ""
+  console_type: ""
+  console_spice_command: ""
+  no_color: false

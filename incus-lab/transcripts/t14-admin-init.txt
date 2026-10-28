@@ -1,0 +1,5 @@
+$ incus admin init --preseed < preseed.yaml  (dir pool, no network)
+Error: Failed to create storage pool "default": Source path '/home/hatch/workspace/build-check/incus-scratch/pool-data' doesn't exist
+[exit 1]
+$ mkdir pool-data && incus admin init --preseed < preseed.yaml
+[exit 0]

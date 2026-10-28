@@ -1,0 +1,6 @@
+$ incus launch images:debian/12 hello
+[client exit after 75s limit: 124 — the client printed nothing while it waited]
+
+Daemon log during the same window:
+time="2026-10-28T05:08:05Z" level=warning msg="Failed to update instance types: Get \"https://images.linuxcontainers.org/meta/instance-types/clouds.yaml\": net/http: TLS handshake timeout"
+time="2026-10-28T05:08:05Z" level=error msg="Failed updating instance types" err="Get \"https://images.linuxcontainers.org/meta/instance-types/clouds.yaml\": net/http: TLS handshake timeout"

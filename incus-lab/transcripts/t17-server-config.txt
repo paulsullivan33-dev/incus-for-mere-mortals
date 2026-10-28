@@ -1,0 +1,3 @@
+$ ./incus config show
+config: {}
+[exit 0]

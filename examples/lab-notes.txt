@@ -1,0 +1,79 @@
+The lab — one client, one daemon, one scratch folder
+====================================================================
+
+The lab is the build machine itself (an
+Ubuntu 24.04 sandbox, 2 CPUs, 7.7 GB RAM),
+and everything Incus-shaped in it lived
+under one scratch directory that was
+deleted when the work was done. Nothing
+was installed system-wide; no other
+machine was touched; no instance ran.
+
+  * The client: the official standalone
+    binary of Incus 7.0.2 (the 7.0 LTS
+    series) from the project's GitHub
+    releases, SHA-256 verified against
+    the release's own checksums.txt
+    before it was run:
+      b007fbfc29695e03bc3e66bbfb5fa3...
+    One file, 26 MB, run in place with
+    its configuration (INCUS_CONF) and
+    the daemon's state (INCUS_DIR)
+    pointed at scratch folders.
+
+  * The daemon: incusd 7.5.1 from the
+    project's official stable packages
+    for Ubuntu 24.04 (the Zabbly
+    repository), downloaded as .deb
+    packages and UNPACKED into scratch,
+    never installed. Its bundled library
+    path was supplied by hand. Started
+    bare, it refused on a missing helper
+    (unsquashfs); Ubuntu's squashfs-tools
+    package was unpacked beside it, and
+    it started.
+
+  * What the daemon did for real: built
+    its state directory and socket in
+    scratch, served the API, initialised
+    from a preseed file (dir storage
+    pool + a root-only default profile),
+    created the pool, and answered list,
+    info, config, storage and profile
+    queries. Its startup log is kept
+    whole: no /dev/kvm (VMs declared not
+    operational), no visible cgroup
+    controllers (limits would be
+    ignored), no subuid map (idmap
+    error), AppArmor unsupported.
+
+  * What never happened: an instance.
+    `incus launch images:debian/12 hello`
+    waited silently while the daemon
+    tried to reach
+    images.linuxcontainers.org; the
+    sandbox's network ends such
+    conversations in a TLS handshake
+    timeout (the client met the same
+    wall alone, asking for the
+    catalogue). The lab stopped the
+    client after 75 s, shut the daemon
+    down with `incus admin shutdown`,
+    and verified: no daemon processes,
+    no /var/lib/incus, no new interfaces
+    or mounts. Then the scratch folder
+    went too.
+
+Transcripts live in incus-lab/transcripts/:
+t00 version, t01 full help, t02/t05 the
+no-server errors, t03 remotes + the born
+config file, t04 launch help, t06 the
+shell alias, t07/t07b the catalogue
+attempts, t08 the admin command tree,
+t09 webui help, t10 the version command,
+t12 daemon startup log, t13 server info,
+t14 preseed init (failure, then success),
+t15 storage list, t16 the real default
+profile, t17 server config, t18 the
+launch that waited, t19 the final
+empty list.

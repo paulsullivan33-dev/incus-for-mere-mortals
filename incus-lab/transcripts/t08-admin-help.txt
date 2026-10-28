@@ -1,0 +1,112 @@
+$ ./incus admin --help --sub-commands
+Description:
+  Manage incus daemon
+
+Usage:
+  incus admin [command]
+
+Available Commands:
+  cluster             Low-level cluster administration commands
+  init                Configure the daemon
+  os                  Manage IncusOS systems
+    application  Manage IncusOS applications
+      action          Perform application-specific action
+      add             Add an application
+      backup          Backup the application
+      check-update    Check for application update
+      debug           Debug the application
+      edit            Edit application configuration
+      factory-reset   Factory reset the application
+      list            List applications
+      remove          Remove the application
+      restart         Restart the application
+      restore         Restore an application backup
+      show            Show application details
+      switch-version  Change application version
+    debug        Debug IncusOS systems
+      kernel       Show kernel debug information
+      log          Get debug log
+      processes    Get the system processes
+      report       Show the system metrics report
+      secureboot   Debug IncusOS secureboot
+        event-log    Show the TPM event log
+        update       Update the secureboot keys
+    info         Show system information
+    service      Manage IncusOS services
+      edit         Edit service configuration
+      list         List services
+      reset        Reset the service
+      show         Show service details
+    show         Show details
+    system       Manage IncusOS system details
+      backup             Backup the system
+      factory-reset      Factory reset the system
+      fallback-listener  System fallback HTTPS listener configuration
+        edit         Edit configuration
+        show         Show details
+      kernel             System kernel configuration
+        edit         Edit configuration
+        info         Show System kernel configuration
+        show         Show details
+      logging            System logging
+        edit         Edit configuration
+        show         Show details
+      network            Network configuration
+        confirm      Confirm the new network configuration
+        edit         Edit configuration
+        flush-dns    Flush the DNS cache
+        info         Show Network configuration
+        show         Show details
+      poweroff           Power off the system
+      provider           Image and management provider
+        edit         Edit configuration
+        show         Show details
+      reboot             Reboot the system
+      resources          System resources
+        info         Show System resources
+        show         Show details
+      restore            Restore a system backup
+      security           Security configuration
+        edit         Edit configuration
+        retrieved    Mark the encryption recovery keys as retrieved
+        show         Show details
+        tpm-rebind   Rebind the TPM (after using recovery key)
+      storage            Storage configuration
+        cleanup-root            Clean up the root partition
+        create-volume           Create a storage volume
+        delete                  Delete the storage pool
+        delete-volume           Delete the storage volume
+        edit                    Edit configuration
+        encrypt-drive           Encrypt the drive
+        import-encrypted-drive  Import an existing encrypted drive
+        import-storage-pool     Import an existing encrypted storage pool
+        info                    Show Storage configuration
+        rescan-scsi             Rescan the SCSI buses for new devices
+        scrub-pool              Scrub the storage pool
+        show                    Show details
+        trim-pool               Trim the storage pool
+        wipe-drive              Wipe the drive
+      suspend            Suspend the system
+      update             Update configuration
+        check        Check for updates and apply them
+        edit         Edit configuration
+        show         Show details
+  recover             Recover missing instances and volumes from existing and unknown storage pools
+  shutdown            Tell the daemon to shutdown all instances and exit
+  sql                 Execute a SQL query against the local or global database
+  update-certificate  Update the server certificate
+  waitready           Wait for the daemon to be ready to process requests
+
+Global Flags:
+      --debug          Show all debug messages
+      --explain        If the command is valid, explain its parsed arguments instead of running it
+      --force-local    Force using the local unix socket
+  -h, --help           Print help
+      --project        Override the source project
+  -q, --quiet          Don't show progress information
+      --sub-commands   Use with help or --help to view sub-commands
+  -v, --verbose        Show all information messages
+      --version        Print version number
+
+Use "incus admin [<command>] --help" for more information about a command.
+[exit 0]
